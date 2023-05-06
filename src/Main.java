@@ -19,7 +19,7 @@ public class Main {
         Ship allureOfTheSeas = new Ship("Allure of the Seas", 4, 22,"Капитан Грей");
         System.out.println(allureOfTheSeas);
         allureOfTheSeas.captainGreeting();
-        System.out.println("Список пассажиров: "+passengers);
+        allureOfTheSeas.printPassengers();
         allureOfTheSeas.pickPassenger(jack);
         allureOfTheSeas.pickPassenger(bob);
         allureOfTheSeas.pickPassenger(anna);
