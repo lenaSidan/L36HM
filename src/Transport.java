@@ -3,60 +3,71 @@ import java.util.List;
 
 public class Transport {
     private String title;
-    private double capacity;
-    private List<Passenger> passengers = new ArrayList<>();
+    private int capacity;
+    private List<Passenger> passengers;
     private  double speed;
 
-    public Transport(String title, double capacity, List<Passenger> passengers, double speed) {
+    public Transport(String title, int capacity,  double speed) {
         this.title = title;
         this.capacity = capacity;
-        this.passengers = passengers;
+        this.passengers = new ArrayList<>();
         this.speed = speed;
     }
 
     @Override
     public String toString() {
-        return "Transport{" +
-                "title='" + title + '\'' +
-                ", capacity=" + capacity +
-                ", passengers=" + passengers +
-                ", speed=" + speed +
-                '}';
+        return "\nДобро пожаловать на борт корабля " + "'"+ title +"'"+
+               "\nВместимость корабля " + capacity + " человек"+
+               ", Скорость корабля = " + speed +
+               " узла";
     }
-
     public String getTitle() {
         return title;
     }
-
     public void setTitle(String title) {
         this.title = title;
     }
-
-    public double getCapacity() {
+    public int getCapacity() {
         return capacity;
     }
-
-    public void setCapacity(double capacity) {
+    public void setCapacity(int capacity) {
         this.capacity = capacity;
     }
-
     public List<Passenger> getPassengers() {
         return passengers;
     }
-
     public void setPassengers(List<Passenger> passengers) {
         this.passengers = passengers;
     }
-
     public double getSpeed() {
         return speed;
     }
-
     public void setSpeed(double speed) {
         this.speed = speed;
     }
-    public static void printPassengers(){
-
+    public void printPassengers(){
+        System.out.println("Список пассажиров: ");
+        for (Passenger passenger: passengers){
+            System.out.println(passenger.getName());
+        }
+    }
+    public void pickPassenger(Passenger passenger){
+        if(capacity>passengers.size()){
+            passengers.add(passenger);
+            System.out.println(passenger.getName()+ ", добро пожаловать на борт.");
+        }else {
+            System.out.println("Извините, "+passenger.getName()+ ", мест нет.");
+        }
+    }
+    public void dropPassenger(String passengerName){
+        for (Passenger passenger: passengers){
+            if (passenger.getName().equals(passengerName)){
+                passengers.remove(passenger);
+                System.out.println(passengerName+", Ваша высадка.");
+                return;
+            }
+        }
+        System.out.println("Пассажир " +passengerName+ " в списке не значится.");
     }
 }
 /*
@@ -66,7 +77,6 @@ capacity - вместимость транспортного средства
 List<Passenger> passengers = new ArrayList<>(); -
 speed - максимальная скорость работы
 Пусть в классе будет метод:
-
 printPassengers(), который выводит всех пассажиров в печать.
 pickPassenger(Passenger passenger) - метод добавляет пассажира на борт, если транспорт не заполнен (см. capacity).
 (дополнительно) dropPassenger(String passengerName) - метод высаживает пассажира c указанным именем.
