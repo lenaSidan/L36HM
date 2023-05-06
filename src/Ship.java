@@ -20,7 +20,7 @@ public class Ship extends Transport{
         this.captainName = captainName;
     }
     public void captainGreeting(){
-        System.out.println("Добро пожаловать на борт!");
+        System.out.println("Мы рада приветствовать Вас !");
     }
 }
 /*
